@@ -1,8 +1,8 @@
 {
-  "name": "firebot-custom-script-starter",
-  "scriptOutputName": "starterScript",
+  "name": "firebot-script-govee",
+  "scriptOutputName": "goveeScript",
   "version": "1.0.0",
-  "description": "A starter Firebot custom script",
+  "description": "Firebot integration for Govee",
   "main": "",
   "scripts": {
     "build": "webpack",
@@ -15,6 +15,7 @@
   "devDependencies": {
     "@crowbartools/firebot-custom-scripts-types": "^5.53.2",
     "@types/node": "^14.14.6",
+    "@types/webpack-env": "^1.18.1",
     "jest": "^26.6.3",
     "terser-webpack-plugin": "^4.2.3",
     "ts-jest": "^26.4.4",
@@ -22,5 +23,9 @@
     "typescript": "^4.0.5",
     "webpack": "^4.44.2",
     "webpack-cli": "^4.1.0"
+  },
+  "volta": {
+    "node": "14.18.1",
+    "npm": "8.16.0"
   }
 }

@@ -1,33 +1,41 @@
 import { Firebot } from "@crowbartools/firebot-custom-scripts-types";
 
 interface Params {
-  message: string;
+  token: string;
 }
 
 const script: Firebot.CustomScript<Params> = {
   getScriptManifest: () => {
     return {
-      name: "Starter Custom Script",
-      description: "A starter custom script for build",
-      author: "SomeDev",
+      name: "Govee",
+      description: "Govee script",
+      author: "DennisOnTheInternet",
       version: "1.0",
       firebotVersion: "5",
     };
   },
   getDefaultParameters: () => {
     return {
-      message: {
+      token: {
         type: "string",
-        default: "Hello World!",
-        description: "Message",
-        secondaryDescription: "Enter a message here",
+        default: "",
+        description: "API Token",
+        secondaryDescription: "Enter your Govee API Token here",
       },
     };
   },
   run: (runRequest) => {
-    const { logger } = runRequest.modules;
-    logger.info(runRequest.parameters.message);
+    const effects = require.context('./effects', true, /\.ts$/);
+    for (const key of effects.keys()) {
+      debugger;
+      runRequest.modules.effectManager.registerEffect(effects(key).default);
+    }
   },
+  parametersUpdated(parameters: Params) {
+    params = parameters;
+  }
 };
+
+export let params: Params = null;
 
 export default script;
